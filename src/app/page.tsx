@@ -7,12 +7,19 @@ import Cart from '@/components/Cart';
 import ProductList from '@/components/ProductList';
 
 
+
+
+
 export default function Home() {
   
   
  
   const [products, setProducts] = useState<Product[]>([]);
  
+  useEffect(() => {
+    fetch('/apii/responses')
+      .then((response) => response.json())
+  }, []);
 
   
   
@@ -56,6 +63,48 @@ export default function Home() {
       return totalPrice;
   }
 
+  const [purchasedProducts, setPurchasedProducts] = useState<CartItem[]>([]);
+
+  const handlePurchase = () => {
+    // lager en kopi av cart
+    const updatedCart = [...cart];
+  
+    // flytter over items fra cart til purscahesProducts
+    const purchasedItems = [...purchasedProducts];
+    updatedCart.forEach((cartItem) => {
+      const existingItemIndex = purchasedItems.findIndex(
+        (purchasedItem) => purchasedItem.product.title === cartItem.product.title
+      );
+  
+      if (existingItemIndex !== -1) {
+        // hvis product allerede eksisterer i purchaesdProducts oppdater heller quantity
+        purchasedItems[existingItemIndex].quantity += cartItem.quantity;
+      } else {
+        // ellers skal den bare legge produktet i pruchaseditems
+        purchasedItems.push({ ...cartItem });
+      }
+    });
+  
+    //gjenbruker allerede eksisterende funksjon men gir den ett nytt navn så jeg kan kalle på den.
+    const totalCost = calculateTotalPrice();
+  
+    // her setter jeg purchased products og tømmer cart for items så det blir en tom array. dette resetere også hele programmet som gjør at du får
+    //nye 12 produkter du kan velge mellom. 
+    setPurchasedProducts(purchasedItems);
+    setCart([]);
+  
+  
+      //disse to consol.logene er her kun fordi jeg vil vise at det fungerer. ville jeg gjort det bedre hadde jeg laget en komponent for 
+      //purscahesitems som hviser hva bruker har kjøpt, antall per produkt og hvor mye det har kostet.
+      console.log(purchasedItems),
+      console.log(totalCost)
+    
+  };
+  
+
+  
+
+ 
 
   
 
@@ -69,7 +118,10 @@ export default function Home() {
       incrementQuantity={incrementQuantity}
       decrementQuantity={decrementQuantity}
       calculateTotalPrice={calculateTotalPrice}
+      handlePurchase={handlePurchase}
+      
       />
+      
     </>
   )
 };

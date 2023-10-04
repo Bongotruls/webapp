@@ -1,6 +1,7 @@
 import type { Product } from '@/components/types/types'
 
 
+
 const titles = ["vann", "brød", "salami", "toast", "brus"]
 const prices = [500, 200, 300, 100, 50, 29, 99]
 const categories = ["Food", "Drinks", "wholefoods"]

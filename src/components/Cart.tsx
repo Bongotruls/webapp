@@ -3,13 +3,15 @@ import type { CartItem } from '@/components/types/types';
 
 interface CartProps {
     cart: CartItem[],
-    incrementQuantity: (cartIndex: number) => void;
-    decrementQuantity: (cartIndex: number) => void;
-    calculateTotalPrice: () => number;
+    incrementQuantity: (cartIndex: number) => void,
+    decrementQuantity: (cartIndex: number) => void,
+    calculateTotalPrice: () => number,
+    handlePurchase: () => void
 };
 
-const Cart: React.FC<CartProps>= ({cart, incrementQuantity,decrementQuantity, calculateTotalPrice }) => {
+const Cart: React.FC<CartProps>= ({cart, incrementQuantity,decrementQuantity, calculateTotalPrice, handlePurchase }) => {
     return (
+        <>
         <div>
           <h2>Shopping Cart</h2>
           <ul>
@@ -36,7 +38,15 @@ const Cart: React.FC<CartProps>= ({cart, incrementQuantity,decrementQuantity, ca
             ))}
           </ul>
           <p>Total Price: {calculateTotalPrice()} KR</p>
+          <section>
+           <button onClick={handlePurchase} type="button"className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full m-3"
+                  style={{ width: '100px', height: '50px' }}
+                >
+                Kjøp!
+                </button>
+          </section>
         </div>
+        </>
       );
     };
     
