@@ -6,10 +6,9 @@ test('should decrement quantity in cart when Decrement button is pressed', () =>
   const initialCart = [
     {
       product: {
-        id: 1,
-        title: 'Product 1',
+        title: 'Vann',
         price: 10,
-        category: 'Category A',
+        category: 'tur',
       },
       quantity: 3,
     },

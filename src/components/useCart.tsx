@@ -1,18 +1,9 @@
 import { Product, CartItem } from "./types/types";
 import React, { useState } from "react";
 
-export type UseCart = {
-    cart: CartItem[];
-    addToCart: (product: Product) => void;
-    isInCart: (product: Product) => boolean;
-    incrementQuantity: (cartIndex: number) => void;
-    decrementQuantity: (cartIndex: number) => void;
-    calculateTotalPrice: () => number;
-    handlePurchase: () => void;
-  };
 
 export function useCart() {
-    const [cart, setCart] = useState<CartItem[]>([]);
+    const [cart, setCart] = useState<CartItem[]>([] as CartItem[]);
   
     //logikk for å legge til objekt i handlekurv
     const addToCart = (product: Product) => {
