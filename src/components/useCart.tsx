@@ -4,20 +4,24 @@ import React, { useState } from "react";
 export function useCart() {
     const [cart, setCart] = useState<CartItem[]>([]);
   
+    //logikk for å legge til objekt i handlekurv
     const addToCart = (product: Product) => {
       setCart([...cart, { product, quantity: 1 }]);
     };
   
+    //logik for om objekt er i handlekurven
     const isInCart = (product: Product) => {
       return cart.some((item) => item.product.title === product.title);
     };
   
+    //logikk for å legge til flere produkter av samme type i handlekurv
     const incrementQuantity = (cartIndex: number) => {
       const updatedCart = [...cart];
       updatedCart[cartIndex].quantity++;
       setCart(updatedCart);
     };
-  
+    
+    //logikk for å ta -1 av et produkt i handlekurv av samme type
     const decrementQuantity = (cartIndex: number) => {
       const updatedCart = [...cart];
       updatedCart[cartIndex].quantity--;
@@ -26,7 +30,8 @@ export function useCart() {
       }
       setCart(updatedCart);
     };
-  
+    
+    //logikk for total pris 
     const calculateTotalPrice = (): number => {
       let totalPrice = 0;
       cart.forEach((item) => {
@@ -57,13 +62,14 @@ export function useCart() {
       }
     });
     
+    //totalprice lagt til kun for console.log()
     let totalprice = calculateTotalPrice();
     // her setter jeg purchased products og tømmer cart for items så det blir en tom array. dette resetere også hele programmet som gjør at du får
     //nye 12 produkter du kan velge mellom. 
     setPurchasedProducts(purchasedItems);
     setCart([]);
 
-    //console logg for å se array 
+    //console logg for å se at riktig objekter og total pris skrives ut i console.
     console.log(purchasedItems)
     console.log(totalprice)
     
