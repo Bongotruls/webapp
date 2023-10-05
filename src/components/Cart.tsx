@@ -6,7 +6,8 @@ interface CartProps {
     incrementQuantity: (cartIndex: number) => void,
     decrementQuantity: (cartIndex: number) => void,
     calculateTotalPrice: () => number,
-    handlePurchase: () => void
+    handlePurchase: () => void,
+    setCart: (newCart: CartItem[]) => void;
 };
 
 const Cart: React.FC<CartProps>= ({cart, incrementQuantity,decrementQuantity, calculateTotalPrice, handlePurchase }) => {

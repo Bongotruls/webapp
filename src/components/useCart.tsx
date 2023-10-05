@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 
 export function useCart() {
-    const [cart, setCart] = useState<CartItem[]>([] as CartItem[]);
+    const [cart, setCart] = useState<CartItem[]>([]);
   
     //logikk for å legge til objekt i handlekurv
     const addToCart = (product: Product) => {
@@ -82,6 +82,7 @@ export function useCart() {
   
     return {
       cart,
+      setCart,
       addToCart,
       isInCart,
       incrementQuantity,
