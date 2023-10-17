@@ -21,16 +21,12 @@ test('should decrement quantity in cart when Decrement button is pressed', () =>
     act(() => {
         result.current.setCart(initialCart);
     });
-
-    // Log the initial state of the cart
-    console.log("Initial Cart:", result.current.cart);
-
+    
     act(() => {
         result.current.decrementQuantity(0); 
     });
 
-    // Log the updated state of the cart after decrementing
-    console.log("Updated Cart:", result.current.cart);
+
 
     expect(result.current.cart[0].quantity).toBe(2); 
 });
