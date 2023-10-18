@@ -2,7 +2,7 @@
 import { productFactory } from '@/components/products';
 import type { Product } from '@/components/types/types';
 import React, { useState, useEffect } from "react";
-
+import Link from 'next/link';
 
 
 
@@ -88,6 +88,11 @@ export default function apiHome() {
   >
     Send String to API
   </button>
+  <div className="mt-4">
+  <Link href="/homePage" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Go HOME
+  </Link>
+</div>
 </div>
 <p className="text-green-600 mt-2">{responseMessage}</p>
 <div className="bg-gray-200 p-4">

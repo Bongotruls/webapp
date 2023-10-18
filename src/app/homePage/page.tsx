@@ -55,9 +55,11 @@ export default function Home() {
           throw new Error('Function not implemented.');
         } }      />
     
-    <div>
-    <Link href="/apiPage">Go to API Page</Link>
-    </div>
+    <div className="mt-4">
+  <Link href="/apiPage" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Go to API Page
+  </Link>
+</div>
  
 
 
