@@ -56,7 +56,7 @@ export default function Home() {
         } }      />
     
     <div>
-    <Link href="http://localhost:3000/apii/pages">Go to API Page</Link>
+    <Link href="/apiPage">Go to API Page</Link>
     </div>
  
 
