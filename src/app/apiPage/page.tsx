@@ -74,16 +74,22 @@ export default function apiHome() {
 
   return (
     <>
-      <div>
-      <input
-        type="text"
-        value={stringData}
-        onChange={(e) => setStringData(e.target.value)}
-        placeholder="Enter a string"
-      />
-      <button onClick={sendStringToAPI}>Send String to API</button>
-      <p>{responseMessage}</p>
-    </div>
+      <div className="flex items-center space-x-2">
+  <input
+    className="border border-gray-400 rounded px-2 py-1"
+    type="text"
+    value={stringData}
+    onChange={(e) => setStringData(e.target.value)}
+    placeholder="Enter a string"
+  />
+  <button
+    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+    onClick={sendStringToAPI}
+  >
+    Send String to API
+  </button>
+</div>
+<p className="text-green-600 mt-2">{responseMessage}</p>
 <div className="bg-gray-200 p-4">
   <h1 className="text-2xl font-bold mb-4">Responses from API</h1>
   <ul>
