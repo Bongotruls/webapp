@@ -8,7 +8,7 @@ import React, { useState, useEffect } from "react";
 
 
 
-export default function Home() {
+export default function apiHome() {
   const [products, setProducts] = useState<Product[]>([]);
  
      useEffect(() => {
